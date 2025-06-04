@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop: HTML Form Practice</title>
+    <!-- แบบฝึกทักษะ: การสร้างและใช้งาน <form> อย่างมืออาชีพ -->
+
+</head>
+
+
+<body>
+    <div class="container">
+        <h1>แบบฝึกทักษะ: สร้างแบบฟอร์ม HTML</h1>
+        <p>กรอกข้อมูลตัวอย่างตามหัวข้อด้านล่างเพื่อทดสอบความเข้าใจเกี่ยวกับ element และ attribute ต่าง ๆ ของ
+            <code>&lt;form&gt;</code>:</p>
+
+        <!--
+      🔍 จุดประสงค์การฝึกปฏิบัติ
+      1) ฝึกใช้ input type ต่าง ๆ (text, radio, checkbox, date, range, color, file ฯลฯ)
+      2) ฝึกใช้ attribute form (action, method, target, autocomplete, enctype)
+      3) ฝึกจัดกลุ่มข้อมูลด้วย <fieldset> + <legend>
+      4) ฝึกใช้งาน select, datalist, textarea และ output
+      5) ฝึกออกแบบปุ่มบังคับการ (submit, reset, button) ให้ตอบสนอง
+    -->
+
+        <form id="workshop-form" action="#" method="post" target="_self" autocomplete="on">
+            <!-- ส่วนซ่อนค่า ID ฟอร์ม -->
+            <input type="hidden" name="formId" value="workshop001">
+
+            <!-- 🔖 Fieldset: Personal Information -->
+            <fieldset>
+                <legend>ข้อมูลส่วนตัว</legend>
+
+                <label for="fullname">ชื่อ-สกุล</label>
+                <input type="text" id="fullname" name="fullname" placeholder="กรอกชื่อ-สกุล" required>
+
+                <label>เพศ</label>
+                <input type="radio" id="male" name="gender" value="ชาย" checked>
+                <label for="male" style="display:inline;">ชาย</label>
+
+                <input type="radio" id="female" name="gender" value="หญิง">
+                <label for="female" style="display:inline;">หญิง</label>
+
+                <input type="radio" id="other" name="gender" value="อื่น ๆ">
+                <label for="other" style="display:inline;">อื่น ๆ</label>
+
+                <label for="birthday">วันเกิด</label>
+                <input type="date" id="birthday" name="birthday" required>
+            </fieldset>
+
+            <!-- 🔖 Fieldset: Contact -->
+            <fieldset>
+                <legend>ช่องทางติดต่อ</legend>
+
+                <label for="email">อีเมล</label>
+                <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+
+                <label for="phone">เบอร์โทรศัพท์</label>
+                <input type="tel" id="phone" name="phone" placeholder="080-000-0000"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+
+                <label for="website">เว็บไซต์</label>
+                <input type="url" id="website" name="website" placeholder="https://">
+            </fieldset>
+
+            <!-- 🔖 Fieldset: Skills & Interests -->
+            <fieldset>
+                <legend>ทักษะและความสนใจ</legend>
+
+                <label>เลือกทักษะที่ถนัด (เลือกได้หลายข้อ)</label>
+                <input type="checkbox" id="html" name="skills" value="HTML">
+                <label for="html" style="display:inline;">HTML</label>
+
+                <input type="checkbox" id="css" name="skills" value="CSS">
+                <label for="css" style="display:inline;">CSS</label>
+
+                <input type="checkbox" id="js" name="skills" value="JavaScript">
+                <label for="js" style="display:inline;">JavaScript</label>
+
+                <label for="level">ระดับความชำนาญด้าน HTML (1-10)</label>
+                <input type="range" id="level" name="level" min="1" max="10" step="1" value="5"
+                    oninput="document.getElementById('levelOutput').value=this.value">
+                <output id="levelOutput">5</output>
+
+                <label for="favoriteColor">สีที่ชอบ</label>
+                <input type="color" id="favoriteColor" name="favoriteColor" value="#2563eb">
+
+                <label for="browser">บราวเซอร์ที่ใช้บ่อย</label>
+                <input list="browsers" id="browser" name="browser" placeholder="เลือกหรือพิมพ์ชื่อเบราว์เซอร์">
+                <datalist id="browsers">
+                    <option value="Chrome">
+                    <option value="Firefox">
+                    <option value="Edge">
+                    <option value="Safari">
+                    <option value="Opera">
+                </datalist>
+            </fieldset>
+
+            <!-- 🔖 Fieldset: Others -->
+            <fieldset>
+                <legend>อื่น ๆ</legend>
+
+                <label for="profilePic">รูปโปรไฟล์</label>
+                <input type="file" id="profilePic" name="profilePic" accept="image/*">
+
+                <label for="country">ประเทศ</label>
+                <select id="country" name="country" required>
+                    <optgroup label="อาเซียน">
+                        <option value="TH">ไทย</option>
+                        <option value="SG">สิงคโปร์</option>
+                        <option value="MY">มาเลเซีย</option>
+                    </optgroup>
+                    <optgroup label="อื่น ๆ">
+                        <option value="JP">ญี่ปุ่น</option>
+                        <option value="US">สหรัฐ</option>
+                        <option value="UK">สหราชอาณาจักร</option>
+                    </optgroup>
+                </select>
+
+                <label for="about">เกี่ยวกับตัวคุณ</label>
+                <textarea id="about" name="about" rows="4" placeholder="เล่าเกี่ยวกับตัวคุณ"></textarea>
+            </fieldset>
+
+            <!-- 🔖 Button Group -->
+            <div class="button-group">
+                <input type="reset" value="ล้างข้อมูล">
+                <input type="submit" value="ส่งแบบฟอร์ม">
+                <input type="button" value="แสดงตัวอย่าง" onclick="window.open('#', '_blank')">
+            </div>
+        </form>
+
+        <!-- ℹ️ หมายเหตุ:
+      * เปลี่ยนค่า attribute (method, target, action) ทดสอบผลลัพธ์ที่แตกต่างกัน
+      * เพิ่มหรือลด input type อื่น ๆ ตามโจทย์ที่กำหนด
+      * ลองใช้ attribute max, min, step, pattern ฯลฯ กับ input ต่าง ๆ ดูผลการ validate
+    -->
+    </div>
+</body>
+
+</html>
